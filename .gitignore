@@ -26,3 +26,10 @@
 *.exe
 *.out
 *.app
+*.opensdf
+*.sdf
+*.suo
+
+/project/win32/NyraCore/Debug
+/project/win32/NyraCore/Release
+project/win32/NyraCore/NyraCore.vcxproj.user
