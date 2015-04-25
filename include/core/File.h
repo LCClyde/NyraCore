@@ -24,12 +24,25 @@
 #ifndef __NYRA_CORE_FILE_H__
 #define __NYRA_CORE_FILE_H__
 
+#include <stdint.h>
+#include <vector>
 #include <string>
+#include <fstream>
 
 namespace nyra
 {
 namespace core
 {
+/*
+ *  \func - getFileSize
+ *  \brief - A fast and resuable way to get the size of a file.
+ *
+ *  \param pathname - The pathname to the file on disk. This can be
+ *         relative or absolute.
+ *  \throw - If the file fails to open.
+ */
+size_t getFileSize(const std::string& pathname);
+
 /*
  *  \func - readFile
  *  \brief - Reads the entire contents of a file into a single string.
@@ -41,6 +54,20 @@ namespace core
  *  \throw - If the file fails to open.
  */
 std::string readFile(const std::string& pathname);
+
+/*
+ *  \func - readBinary
+ *  \brief - Reads the entire contents of a file into a buffer.
+ *           This version is better for reading binary files as a
+ *           \0 will not cause issues.
+ *           This function does not focus on efficiency so it is not
+ *           recommended for very large files.
+ *
+ *  \param pathname - The pathname to the file on disk. This can be
+ *         relative or absolute.
+ *  \throw - If the file fails to open.
+ */
+std::vector<uint8_t> readBinary(const std::string& pathname);
 }
 }
 
