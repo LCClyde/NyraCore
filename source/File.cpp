@@ -21,56 +21,28 @@
  * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
  * IN THE SOFTWARE.
  *****************************************************************************/
-#ifndef __NYRA_CORE_EXCEPTION_H__
-#define __NYRA_CORE_EXCEPTION_H__
-
-#include <string>
-#include <stdexcept>
+#include <sstream>
+#include <fstream>
+#include <core/File.h>
+#include <core/Exception.h>
 
 namespace nyra
 {
 namespace core
 {
-/*
- *  \class Exception
- *  \brief Base exception class for nyra code. All nyra based code will
- *         throw this or an inherited version of this class. This allows
- *         the caller to catch the exception using std::exception or to
- *         specialize their code and catch a nyra::core::Exception.
- */
-class Exception : public std::exception
+/*****************************************************************************/
+std::string readFile(const std::string& pathname)
 {
-public:
-    /*
-     *  \func Constructor (string)
-     *  \brief Sets up the internal structure of an exception based on a
-     *         STL string.
-     *
-     *  \param message - A description of the exception.
-     */
-    explicit Exception(const std::string& message);
-
-    /*
-     *  \func Destructor
-     *  \brief Used for proper inheritance.
-     */
-    virtual ~Exception();
-
-    /*
-     *  \func what
-     *  \brief Used to retrieve the stored message. The string is owned
-     *         internally by the exception object and should not be modified
-     *         or freed externally.
-     */
-    virtual const char* what() const
+    const std::ifstream stream(pathname);
+    if (!stream.good())
     {
-        return mMessage.c_str();
+        throw Exception("Failed to open file: " + pathname);
     }
 
-protected:
-    std::string mMessage;
-};
+    std::stringstream buffer;
+    buffer << stream.rdbuf();
+    return buffer.str();
+}
 }
 }
 
-#endif
