@@ -27,5 +27,21 @@ namespace nyra
 {
 namespace core
 {
+/*****************************************************************************/
+void split(const std::string& s,
+           const std::string& delim,
+           std::vector<std::string>& ret)
+{
+    std::string sCopy(s);
+    size_t pos = 0;
+    std::string token;
+    while ((pos = sCopy.find(delim)) != std::string::npos)
+    {
+        token = sCopy.substr(0, pos);
+        ret.push_back(token);
+        sCopy.erase(0, pos + delim.size());
+    }
+    ret.push_back(sCopy);
+}
 }
 }

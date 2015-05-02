@@ -35,18 +35,33 @@ namespace nyra
 {
 namespace core
 {
-// TODO: Add this functionality
-/*void split(const std::string& s,
+/*
+ *  \func - split
+ *  \brief - Splits a string be a deliminator.
+ *
+ *  \param s - The string to split
+ *  \param delim - The string to split at.
+ *  \param ret [OUTPUT] - The output vector.
+ */
+void split(const std::string& s,
            const std::string& delim,
            std::vector<std::string>& ret);
 
+/*
+ *  \func - split
+ *  \brief - Splits a string be a deliminator.
+ *
+ *  \param s - The string to split
+ *  \param delim - The string to split at.
+ *  \return - The output vector.
+ */
 inline std::vector<std::string> split(const std::string& s,
                                       const std::string& delim)
 {
     std::vector<std::string> ret;
     split(s, delim, ret);
     return ret;
-}*/
+}
 
 /*
  *  \func toUpper
