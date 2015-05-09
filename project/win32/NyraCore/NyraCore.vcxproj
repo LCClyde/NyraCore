@@ -11,16 +11,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\source\Exception.cpp" />
-    <ClCompile Include="..\..\..\source\File.cpp" />
-    <ClCompile Include="..\..\..\source\StringConvert.cpp" />
-    <ClCompile Include="..\..\..\source\StringUtils.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\..\include\core\Exception.h" />
     <ClInclude Include="..\..\..\include\core\File.h" />
+    <ClInclude Include="..\..\..\include\core\OptionsParser.h" />
     <ClInclude Include="..\..\..\include\core\StringConvert.h" />
     <ClInclude Include="..\..\..\include\core\StringUtils.h" />
+    <ClInclude Include="..\..\..\include\core\Types.h" />
+    <ClInclude Include="..\..\..\include\core\Vector.h" />
+    <ClInclude Include="..\..\..\include\graphics\Window.h" />
+    <ClInclude Include="..\..\..\include\graphics\WindowSDL.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\source\core\Exception.cpp" />
+    <ClCompile Include="..\..\..\source\core\File.cpp" />
+    <ClCompile Include="..\..\..\source\core\OptionsParser.cpp" />
+    <ClCompile Include="..\..\..\source\core\StringConvert.cpp" />
+    <ClCompile Include="..\..\..\source\core\StringUtils.cpp" />
+    <ClCompile Include="..\..\..\source\graphics\WindowSDL.cpp" />
+    <ClCompile Include="..\..\..\source\graphics\Window.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4F65CF5B-9073-43C6-B9BC-44A324CBD7D1}</ProjectGuid>
@@ -51,13 +59,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)..\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\include;$(SolutionDir)..\..\..\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\..\libs\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir)..\..\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\include;$(SolutionDir)..\..\..\include;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)..\..\libs\$(Configuration)\</OutDir>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
@@ -66,6 +74,7 @@
       <WarningLevel>Level4</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <DisableSpecificWarnings>4512</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -82,6 +91,7 @@ xcopy $(SolutionDir)..\..\libs\* $(SolutionDir)..\..\..\libs /D /E /Q /Y</Comman
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <DisableSpecificWarnings>4512</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
